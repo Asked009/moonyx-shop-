@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Moonyx Shop</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🤑 Moonyx Shop</h1>
+    <div class="header-actions">
+      <button id="theme-toggle">🌙</button>
+      <button id="menu-toggle">☰</button>
+    </div>
+  </header>
+
+  <!-- Kupon panel -->
+  <div id="coupon-panel">
+    <h2>Kupon beváltás</h2>
+    <form id="couponForm">
+      <input type="text" id="coupon" placeholder="Írd be a kuponkódot" required />
+      <button type="submit">Beváltás</button>
+      <p id="couponMessage"></p>
+    </form>
+  </div>
+
+  <main>
+    <!-- Termékek -->
+    <section class="products" id="product-list"></section>
+
+    <!-- Rendelés -->
+    <section class="order-form">
+      <h2>Megrendelés</h2>
+      <form id="orderForm" action="https://formspree.io/f/xjkedaey" method="POST">
+        <label for="product">Termék:</label>
+        <input type="text" name="product" id="product" placeholder="Termék neve" readonly required />
+
+        <label for="email">Email címed:</label>
+        <input type="email" name="email" id="email" placeholder="pl: te@email.hu" required />
+
+        <label for="payment">Fizetési mód:</label>
+        <select name="payment" id="payment" required>
+          <option value="kartya" selected>Kártyás fizetés</option>
+          <option value="utanvet">Utánvét (+10 Ft)</option>
+        </select>
+
+        <input type="hidden" name="couponUsed" id="couponUsed" value="Nincs" />
+        <input type="hidden" name="finalPrice" id="finalPrice" value="" />
+
+        <p id="totalPriceBox">Fizetendő: <strong>0 Ft</strong></p>
+
+        <button type="submit">Rendelés elküldése</button>
+      </form>
+      <p id="confirmation" style="display:none;">✅ Köszönjük a rendelést!</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Moonyx Shop. Minden jog fenntartva.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
